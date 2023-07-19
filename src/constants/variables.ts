@@ -1,0 +1,5 @@
+const DRAWER_WIDTH = 750;
+
+const BARIKOI_API_KEY = "NDgyODpVRFRERkhJTjJW";
+
+export { DRAWER_WIDTH, BARIKOI_API_KEY };

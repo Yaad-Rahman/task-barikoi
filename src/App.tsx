@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { MapSection } from "./components/MapSection";
+import { Box } from "@mui/material";
+import { SearchDrawer } from "./components/SearchDrawer";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useSelector } from "react-redux";
+import { RootReducerState } from "./redux/store";
 
 function App() {
+  const isDarkMode = useSelector(
+    (state: RootReducerState) => state.theme.darkMode
+  );
+
+  const theme = createTheme({
+    palette: {
+      mode: isDarkMode ? "dark" : "light",
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Box display="flex">
+        <SearchDrawer />
+        <MapSection />
+      </Box>
+    </ThemeProvider>
   );
 }
 
